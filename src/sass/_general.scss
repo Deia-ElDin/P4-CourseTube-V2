@@ -1,0 +1,12 @@
+$transition: all 1.5s ease;
+
+@mixin flex($direction) {
+  display: flex;
+  align-items: center;
+  @if($direction == row) {
+    justify-content: center;
+  }
+  @else {
+    flex-direction: column;
+  }
+}

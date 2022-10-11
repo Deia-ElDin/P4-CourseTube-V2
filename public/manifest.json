@@ -1,0 +1,9 @@
+{
+  "short_name": "CourseTube",
+  "name": "CourseTube",
+  "icons": [
+    {
+      "src": "favicon.ico"
+    }
+  ]
+}

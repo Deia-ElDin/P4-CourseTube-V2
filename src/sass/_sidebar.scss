@@ -1,0 +1,155 @@
+@import './general';
+
+.sidebar-max {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: var(--bgc-primary);
+
+  &::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--bgc-primary);
+    border-radius: 5px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar {
+      display: block;
+      width: 9px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--bgc-primary);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-scrollbar);
+      border-radius: 5px;
+    }
+  }
+
+  .title {
+    @include flex(row);
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-hover);
+    }
+
+    &:active {
+      background-color: var(--color-active);
+    }
+  }
+
+  .course,
+  .instructor {
+    @include flex(row);
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 7px 0 7px 20px;
+
+    .logo,
+    .name {
+      cursor: pointer;
+    }
+  }
+
+  .instructor {
+    img {
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+    }
+  }
+
+  footer {
+    @include flex(row);
+    padding-top: 10px;
+    color: var(--color-footer);
+    text-align: center;
+  }
+}
+
+.sidebar-min {
+  @extend .sidebar-max;
+  width: 130px;
+
+  .btn-container {
+    .arrows-btn {
+      position: absolute;
+      top: 2px;
+      right: 1px;
+      height: 20px;
+      width: 35px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background-color: var(--btn-bgc);
+      z-index: 1;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        right: 7px;
+        border: 1px solid var(--btn-border);
+        width: 7px;
+        height: 7px;
+        transform: translate(100%, -50%) rotate(45deg);
+        border-top: transparent;
+        border-right: transparent;
+        animation: slide-left 1s infinite;
+      }
+
+      &::after {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes slide-left {
+        0% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 0;
+          right: 35px;
+        }
+      }
+    }
+  }
+
+  .title {
+    @include flex(column);
+    gap: 5px;
+  }
+
+  .course,
+  .instructor {
+    @include flex(column);
+    gap: 5px;
+    padding: 7px 0;
+
+    h4 {
+      text-align: center;
+    }
+  }
+}
+
+.sidebar-off {
+  display: none;
+}

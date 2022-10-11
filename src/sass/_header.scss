@@ -1,0 +1,408 @@
+@import './general';
+
+header {
+  @include flex(row);
+  justify-content: space-between;
+  padding: 5px 20px;
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: var(--bgc-primary);
+  border-bottom: 1px solid var(--color-active);
+
+  .logo {
+    @include flex(row);
+
+    img {
+      width: 30px;
+      height: 25px;
+    }
+  }
+
+  .left-header {
+    @include flex(row);
+    justify-content: space-between;
+    height: 85%;
+    width: 200px;
+
+    .logo-div {
+      @include flex(row);
+      gap: 2px;
+      cursor: pointer;
+    }
+  }
+
+  .middle-header {
+    @include flex(row);
+    flex: 1;
+    height: 85%;
+    margin: 0 50px;
+
+    .btn-container {
+      position: relative;
+      height: 20px;
+      width: 35px;
+      margin-right: 8px;
+
+      .arrows-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        background-color: var(--btn-bgc);
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          right: 7px;
+          border: 1px solid var(--btn-border);
+          width: 7px;
+          height: 7px;
+          transform: translate(100%, -50%) rotate(45deg);
+          border-top: transparent;
+          border-right: transparent;
+          animation: slide-left 1s infinite;
+        }
+
+        &::after {
+          animation-delay: 0.3s;
+        }
+
+        @keyframes slide-left {
+          0% {
+            opacity: 1;
+          }
+          60% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 0.3;
+          }
+          100% {
+            opacity: 0;
+            right: 35px;
+          }
+        }
+      }
+    }
+
+    .search-input {
+      height: 100%;
+      border: 1px solid var(--search-input-border);
+      border-radius: 2px 0 0 2px;
+      padding-left: 5px;
+      width: 100%;
+      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+      outline: none;
+      font-size: 1.1rem;
+
+      &::placeholder {
+        font-size: 1.1rem;
+        opacity: 0.7;
+      }
+
+      &:focus {
+        border: 1px solid var(--search-input-box-shadow);
+      }
+    }
+
+    .search-btn {
+      @include flex(row);
+      height: 100%;
+      min-width: 60px;
+      background-color: var(--btn-bgc);
+      border: 1px solid var(--btn-border);
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      color: var(--color-icon-2);
+
+      &:hover {
+        background-color: var(--color-hover);
+      }
+
+      &:active {
+        background-color: var(--color-active);
+      }
+    }
+
+    .search-mic {
+      @include flex(row);
+      height: 100%;
+      background-color: var(--btn-bgc);
+      aspect-ratio: 1/1;
+      margin-left: 8px;
+      border: transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      transition: $transition;
+
+      &:hover {
+        background-color: var(--color-hover);
+      }
+
+      &:active {
+        background-color: var(--color-active);
+      }
+
+      .outer-1 {
+        background-color: transparent;
+        border: 1px solid var(--color-hover);
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        position: absolute;
+        transform: scale(1);
+        transition: $transition;
+        animation: waveEffect-1 0.5s infinite;
+      }
+
+      .outer-2 {
+        background-color: transparent;
+        border: 1px solid var(--color-active);
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        position: absolute;
+        transform: scale(1);
+        transition: $transition;
+        animation: waveEffect-2 1s infinite;
+      }
+
+      @keyframes waveEffect-1 {
+        0% {
+          transform: scale(1.05);
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      @keyframes waveEffect-2 {
+        0% {
+          transform: scale(1.05);
+          opacity: 0.6;
+        }
+        50% {
+          transform: scale(1.07);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.17);
+          border: 1px solid var(--btn-border);
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .right-header {
+    @include flex(row);
+    height: 85%;
+    gap: 15px;
+
+    .btn-container {
+      position: relative;
+      height: 20px;
+      width: 35px;
+
+      .arrows-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        background-color: var(--btn-bgc);
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          left: 7px;
+          border: 1px solid var(--btn-border);
+          width: 7px;
+          height: 7px;
+          transform: translate(-100%, -50%) rotate(45deg);
+          border-bottom: transparent;
+          border-left: transparent;
+          animation: slide-right 1s infinite;
+        }
+
+        &::after {
+          animation-delay: 0.3s;
+        }
+
+        @keyframes slide-right {
+          0% {
+            opacity: 1;
+          }
+          60% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 0.3;
+          }
+          100% {
+            opacity: 0;
+            left: 35px;
+          }
+        }
+      }
+    }
+
+    .color {
+      height: 25px;
+      width: 25px;
+      @include flex(column);
+      border-radius: 20%;
+      overflow: hidden;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+
+      .color-div {
+        height: 25%;
+        width: 100%;
+      }
+
+      &:hover {
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+    .slider {
+      @include flex(row);
+      gap: 10px;
+      accent-color: var(--color-slider);
+    }
+
+    .btn-div {
+      @include flex(row);
+      justify-content: flex-end;
+      padding: 5px 5px 0 0;
+
+      .close-btn {
+        @include flex(row);
+        height: 100%;
+        aspect-ratio: 1/1;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .user {
+    height: 100%;
+    aspect-ratio: 1/1;
+    @include flex(row);
+    margin-left: 15px;
+
+    img {
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .btn {
+    @include flex(row);
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    .outer {
+      display: none;
+    }
+
+    &:active {
+      .outer {
+        display: block;
+        background-color: transparent;
+        border: none;
+        height: 90%;
+        width: 90%;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        transform: scale(1);
+        transition: all 0.7s ease;
+        animation: border-color 0.7s;
+      }
+    }
+  }
+
+  .mini-search {
+    @include flex(row);
+    flex: 1;
+  }
+
+  .mini-options {
+    margin-left: auto;
+  }
+
+  @keyframes border-color {
+    0% {
+      background-color: var(--color-active);
+    }
+    50% {
+      border: 1px solid var(--btn-border);
+      transform: scale(1.2);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(1.4);
+      opacity: 0.2;
+    }
+  }
+}
+
+@media all and (max-width: 900px) {
+  header {
+    .middle-header {
+      margin: 0 30px;
+    }
+  }
+}
+
+@media all and (max-width: 585px) {
+  header {
+    padding: 5px 15px;
+
+    .left-header {
+      margin-right: 0;
+      width: 190px;
+    }
+
+    .middle-header {
+      margin: 0;
+
+      .search-input {
+        flex: 1;
+      }
+    }
+
+    .right-header {
+      margin-left: 0;
+    }
+  }
+}
