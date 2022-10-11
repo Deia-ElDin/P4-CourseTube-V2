@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/P4-CourseTube-V2/static/css/main.c996eb88.css",
+    "main.js": "/P4-CourseTube-V2/static/js/main.fff2565d.js",
+    "index.html": "/P4-CourseTube-V2/index.html",
+    "main.c996eb88.css.map": "/P4-CourseTube-V2/static/css/main.c996eb88.css.map",
+    "main.fff2565d.js.map": "/P4-CourseTube-V2/static/js/main.fff2565d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c996eb88.css",
+    "static/js/main.fff2565d.js"
+  ]
+}
